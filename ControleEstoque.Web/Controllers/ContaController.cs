@@ -31,24 +31,32 @@ namespace ControleEstoque.Web.Controllers
             if (achou)
             {
                 FormsAuthentication.SetAuthCookie(login.Usuario, login.LembrarMe);
-                
-                    if (Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        RedirectToAction("Index", "Home");
-                    }
 
-                
+                if (Url.IsLocalUrl(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    RedirectToAction("Index", "Home");
+                }
+
             }
             else
             {
                 ModelState.AddModelError("", "Login Inválido !!!");
             }
             return View(login);
+        }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
+
+
 }
