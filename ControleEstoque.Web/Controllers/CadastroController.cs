@@ -29,6 +29,40 @@ namespace ControleEstoque.Web.Controllers
         {
             return Json(_listaGrupoProduto.Find(x => x.Id == id));
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult ExcluirGruproProduto(int id)
+        {
+            var ret = false;
+            var registroBd = _listaGrupoProduto.Find(x => x.Id == id);
+            if (registroBd != null)
+            {
+                _listaGrupoProduto.Remove(registroBd);
+                ret = true;
+            }
+            return Json(ret);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SalvarGruproProduto(GrupoProdutoModel model)
+        {
+            var registroBd = _listaGrupoProduto.Find(x => x.Id == model.Id);
+            if(registroBd == null)
+            {
+                registroBd = model;
+                registroBd.Id = _listaGrupoProduto.Max(x => x.Id) + 1;
+                _listaGrupoProduto.Add(registroBd);
+            }
+            else
+            {
+                registroBd.Nome = model.Nome;
+                registroBd.Ativo = model.Ativo;
+            }
+            return Json(registroBd);
+        }
+
         [Authorize]
         public ActionResult MarcaProduto()
         {
