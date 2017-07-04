@@ -10,13 +10,6 @@ namespace ControleEstoque.Web.Controllers
     public class CadastroController : Controller
     {
         // GET: Cadastro
-        private static List<GrupoProdutoModel> _listaGrupoProduto = new List<GrupoProdutoModel>()
-        {
-            new GrupoProdutoModel() {Id=1,Nome="Livros",Ativo=true },
-            new GrupoProdutoModel() {Id=2,Nome="Mouse",Ativo=true },
-            new GrupoProdutoModel() {Id=3,Nome="Monitores",Ativo=false },
-        };
-
         [Authorize]
         public ActionResult GrupoProduto()
         {
@@ -25,6 +18,7 @@ namespace ControleEstoque.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult RecuperarGruproProduto(int id)
         {
             return Json(GrupoProdutoModel.RecuperarPeloId(id));
@@ -32,6 +26,7 @@ namespace ControleEstoque.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult ExcluirGruproProduto(int id)
         {
             return Json(GrupoProdutoModel.ExcluirPeloId(id));
@@ -39,6 +34,7 @@ namespace ControleEstoque.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult SalvarGruproProduto(GrupoProdutoModel model)
         {
             var resultado = "Ok";

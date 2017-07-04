@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ControleEstoque.Web.Models
 {
@@ -85,7 +86,7 @@ namespace ControleEstoque.Web.Models
                     using (var comando = new SqlCommand())
                     {
                         comando.Connection = conexao;
-                        comando.CommandText ="delete from grupo_produto where(id =@id";
+                        comando.CommandText ="delete from grupo_produto where (id =@id)";
 
                         comando.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
