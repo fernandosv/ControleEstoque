@@ -15,7 +15,7 @@ namespace ControleEstoque.Web.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Preencha o nome.")]
+        [Required(ErrorMessage = " É necessário preencher o campo nome.")]
         public string Nome { get; set; }
 
         public bool Ativo { get; set; }

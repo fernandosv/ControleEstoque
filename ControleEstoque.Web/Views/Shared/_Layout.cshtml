@@ -82,7 +82,17 @@
                     {
                         <ul class="nav navbar-nav navbar-right">
                             <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
-                            <li><a href="#">Olá @User.Identity.Name</a></li>
+                            <li>
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.Name<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="glyphicon glyphicon-pencil"></i> Editar</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-trash"></i> Apagar</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-ban-circle"></i> Ban</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="i"></i> Tornar Administrador</a></li>
+                                </ul>
+                            </li>
+
                             <li><a href="javascript:document.getElementById('logoffForm').submit()">Sair</a></li>
                         </ul>
                     }

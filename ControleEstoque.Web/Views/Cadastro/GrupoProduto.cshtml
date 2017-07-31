@@ -69,9 +69,12 @@
 </div>
 @Html.Hidden("id_cadastro")
 <div id="modal_cadastro" class="form-horizontal invisivel" role="dialog">
-    <div id="msg_mensagem_aviso" class="text-danger invisivel"></div>
+    
     <fieldset>
         @Html.AntiForgeryToken()
+        @*div id="msg_aviso" class="alert alert-warning invisivel">Falta preencher os campos acima.</div>*@
+        <div id="msg_mensagem_aviso" class="alert alert-danger invisivel"></div>
+        <div id="msg_erro" class="alert alert-danger invisivel">Ops ! Deu ruim.</div>
         <div class="row">
             <div class="form-group">
                 @Html.Label("txt_nome", "Nome", new { @class = "col-md-3 control-label" })
@@ -93,8 +96,8 @@
                     <a id="btn_confirmar" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-save"></i> Salvar</a>
                 </div>
             </div>
-            <div id="msg_aviso" class="alert alert-warning invisivel">Falta preencher os campos acima.</div>
-            <div id="msg_erro" class="alert alert-danger invisivel">Ops ! Deu ruim.</div>
+            @*<div id="msg_aviso" class="alert alert-warning invisivel">Falta preencher os campos acima.</div>*@
+            @*<div id="msg_erro" class="alert alert-danger invisivel">Ops ! Deu ruim.</div>*@
         </div>
     </fieldset>
 </div>

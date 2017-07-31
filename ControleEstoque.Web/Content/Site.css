@@ -35,3 +35,18 @@ textarea {
 .invisivel{
     display: none;
 }
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #5cb85c;
+}
+.nav .caret {
+    border-top-color: #999999;
+    border-bottom-color: #999999;
+}
+.nav a:hover .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: transparent;
+}

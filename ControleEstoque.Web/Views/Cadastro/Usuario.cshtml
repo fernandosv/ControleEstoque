@@ -68,8 +68,10 @@
 </div>
 @Html.Hidden("id_cadastro")
 <div id="modal_cadastro" class="form-horizontal invisivel" role="dialog">
-    <div id="msg_mensagem_aviso" class="text-danger invisivel"></div>
+    
     <fieldset>
+        <div id="msg_mensagem_aviso" class="alert alert-danger invisivel"></div>
+        <div id="msg_erro" class="alert alert-danger invisivel">Ops ! Deu ruim.</div>
         @Html.AntiForgeryToken()
         <div class="row">
             <div class="form-group">
@@ -98,8 +100,7 @@
                         <a id="btn_sair" class="btn btn-default" role="button" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Sair</a>
                         <a id="btn_confirmar" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-ok"></i> Salvar</a>
                     </div>
-                    <div id="msg_aviso" class="alert alert-warning invisivel">Falta preencher os campos acima.</div>
-                    <div id="msg_erro" class="alert alert-danger invisible">Ops! Deus ruim!</div>
+                    
                 </div>
             </div>
         </div>
