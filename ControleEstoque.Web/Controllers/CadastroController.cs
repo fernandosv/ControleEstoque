@@ -9,7 +9,8 @@ namespace ControleEstoque.Web.Controllers
 {
     public class CadastroController : Controller
     {
-        // GET: Cadastro
+        // GET: Cadastro\
+        private const int _quantMaxLinhasPorPagina = 5;
 
         #region Usuários
 
@@ -87,21 +88,31 @@ namespace ControleEstoque.Web.Controllers
         [Authorize]
         public ActionResult GrupoProduto()
         {
-            var lista = GrupoProdutoModel.RecuperarLista();
-
-            ViewBag.QuantMaxLinhasPorPagina = 5;
+            ViewBag.QuantMaxLinhasPorPagina = _quantMaxLinhasPorPagina;
             ViewBag.PaginaAtual = 1;
+
+            var lista = GrupoProdutoModel.RecuperarLista(ViewBag.PaginaAtual, _quantMaxLinhasPorPagina);
+            var quant = GrupoProdutoModel.RecuperarQuantidade();
             
-            var difQuantPaginas = (lista.Count % ViewBag.QuantMaxLinhasPorPagina) > 0 ? 1 : 0;
-            ViewBag.QuantPaginas = (lista.Count / ViewBag.QuantMaxLinhasPorPagina) + difQuantPaginas;
+            var difQuantPaginas = (quant % ViewBag.QuantMaxLinhasPorPagina) > 0 ? 1 : 0;
+            ViewBag.QuantPaginas = (quant / ViewBag.QuantMaxLinhasPorPagina) + difQuantPaginas;
 
             return View(lista);
+        }
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public JsonResult GrupoProdutoPagina(int pagina)
+        {
+            var lista = GrupoProdutoModel.RecuperarLista(pagina, _quantMaxLinhasPorPagina);
+
+            return Json(lista);
         }
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult RecuperarGruproProduto(int id)
+        public JsonResult RecuperarGruproProduto(int id)
         {
             return Json(GrupoProdutoModel.RecuperarPeloId(id));
         }
@@ -109,7 +120,7 @@ namespace ControleEstoque.Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult ExcluirGruproProduto(int id)
+        public JsonResult ExcluirGruproProduto(int id)
         {
             return Json(GrupoProdutoModel.ExcluirPeloId(id));
         }
@@ -117,7 +128,7 @@ namespace ControleEstoque.Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult SalvarGruproProduto(GrupoProdutoModel model)
+        public JsonResult SalvarGruproProduto(GrupoProdutoModel model)
         {
             var resultado = "Ok";
             var mensagens = new List<string>();
