@@ -185,7 +185,7 @@
             .on(`click`, `.btn-alterar`, function () {
                 var btn = $(this),
                     id = btn.closest('tr').attr('data-id'),
-                    url = '@Url.Action("RecuperarGruproProduto", "Cadastro")';
+                    url = '@Url.Action("RecuperarGruproProduto", "CadGrupoProduto")';
                 param = { 'id': id };
                 $.post(url, add_anti_forgery_token(param), function (response) {
                     if (response) {
@@ -197,7 +197,7 @@
                 var btn = $(this),
                     tr = btn.closest('tr'),
                     id = tr.attr('data-id'),
-                    url = '@Url.Action("ExcluirGruproProduto", "Cadastro")';
+                    url = '@Url.Action("ExcluirGruproProduto", "CadGrupoProduto")';
                 param = { 'id': id };
 
                 bootbox.confirm({
@@ -226,7 +226,7 @@
             })
             .on('click', '#btn_confirmar', function () {
                 var btn = $(this),
-                    url = '@Url.Action("SalvarGruproProduto", "Cadastro")',
+                    url = '@Url.Action("SalvarGruproProduto", "CadGrupoProduto")',
                     param = {
                         Id: $('#id_cadastro').val(),
                         Nome: $('#txt_nome').val(),
@@ -268,7 +268,7 @@
                 var btn = $(this),
                     tamPag = $('#ddl_tam_pag').val(),
                     pagina = btn.text(),
-                    url = '@Url.Action("GrupoProdutoPagina", "Cadastro")';
+                    url = '@Url.Action("GrupoProdutoPagina", "CadGrupoProduto")';
                     param = { 'pagina': pagina, 'tamPag': tamPag };
 
                 $.post(url, add_anti_forgery_token(param), function (response) {
@@ -289,7 +289,7 @@
                 var ddl = $(this),
                     tamPag = ddl.val(),
                     pagina = 1,
-                    url = '@Url.Action("GrupoProdutoPagina", "Cadastro")';
+                    url = '@Url.Action("GrupoProdutoPagina", "CadGrupoProduto")';
                     param = { 'pagina': pagina, 'tamPag': tamPag };
 
                 $.post(url, add_anti_forgery_token(param), function (response) {

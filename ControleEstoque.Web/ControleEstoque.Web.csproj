@@ -142,6 +142,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CadastroController.cs" />
+    <Compile Include="Controllers\Cadastro\CadGrupoProdutoController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\GraficoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -272,7 +273,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Sobre.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Cadastro\GrupoProduto.cshtml" />
+    <Content Include="Views\CadGrupoProduto\Index.cshtml" />
     <Content Include="Views\Cadastro\UnidadeMedida.cshtml" />
     <Content Include="Views\Cadastro\MarcaProduto.cshtml" />
     <Content Include="Views\Cadastro\LocalProduto.cshtml" />

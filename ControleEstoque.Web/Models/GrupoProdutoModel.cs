@@ -53,7 +53,7 @@ namespace ControleEstoque.Web.Models
                     comando.Connection = conexao;
                     comando.CommandText = string.Format(
                         "select * from grupo_produto order by nome offset {0} rows fetch next {1} rows only",
-                        pos > 0 ? pos - 1 : 0, tamPagina);
+                        pos, tamPagina);
                     var reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
